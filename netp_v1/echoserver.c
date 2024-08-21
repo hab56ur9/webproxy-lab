@@ -1,4 +1,4 @@
-#include "csapp.h"
+#include "src/csapp.h"
 
 void echo(int connfd);
 int main(int argc, char **argv)
@@ -35,11 +35,6 @@ void echo(int connfd)
     while((n=Rio_readlineb(&rio,buf,MAXLINE)) != 0)
     {
         printf("server received %d bytes\n", (int)n);
-        // added 
-        printf("the message is \"%s\"", buf);
-        char* tmp = *buf; 
-        *buf = "server send the message";
-        strcpy(buf,tmp);
         Rio_writen(connfd,buf,n);
     }
 }
